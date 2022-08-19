@@ -48,6 +48,7 @@ class ObjetoController extends Controller
         if ($request->hasFile('foto')) {
             $objeto['foto']=$request->file('foto')->storeAs('public/uploads', $newFilename . '.'. $extension);
         }
+
         $objeto = [
             'name' => $request->input('name'),
             'foto' => Storage::url('public/uploads/'. $newFilename . '.'. $extension),
