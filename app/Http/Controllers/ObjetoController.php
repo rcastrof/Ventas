@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Objeto;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreObjeto;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,8 @@ class ObjetoController extends Controller
     /* solo retorna la vista create */
     public function create()
     {
-        return view('objetos.create');
+        $categorias = Categoria::all();
+        return view('objetos.create', compact('categorias'));
     }
 
     /*
@@ -52,7 +54,7 @@ class ObjetoController extends Controller
             'name' => $request->input('name'),
             'foto' => Storage::url('public/uploads/'. $newFilename . '.'. $extension),
             'descripcion' => $request->input('descripcion'),
-            'categoria' => $request->input('categoria'),
+            'categoria_id' => $request->get('categoria'),
             'user_id' =>  auth()->user()->id,
         ];
         Objeto::insert($objeto);
@@ -61,14 +63,16 @@ class ObjetoController extends Controller
     }
     public function show(Objeto $objeto)
     {
-        return view('objetos.show', compact('objeto')) ;
+        $categorias = Categoria::all();
+        return view('objetos.show', compact('objeto','categorias')) ;
     }
 
     /* buscar registro mediante la id del objeto */
     public function edit($id)
     {
+        $categorias = Categoria::all();
         $objeto=Objeto::findOrFail($id);
-        return view('objetos.edit',compact('objeto'));
+        return view('objetos.edit',compact('objeto','categorias'));
     }
     /* valida que los parametros sean requeridos en el formulario de ingreso */
     public function update(Request $request, Objeto $objeto)
@@ -76,7 +80,7 @@ class ObjetoController extends Controller
         $request->validate([
             'name' => 'required',
             'descripcion' => 'required',
-            'categoria' => 'required'
+            'categoria_id' => 'required'
         ]);
         $objeto->update($request->all());
         return redirect()->route('objetos.show', $objeto);

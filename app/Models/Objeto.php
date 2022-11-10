@@ -11,7 +11,12 @@ class Objeto extends Model
 
     protected $guarded = [];
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    public function categoria()
+    {
+        return $this->belongsTo('App\Models\Categoria');
     }
 }

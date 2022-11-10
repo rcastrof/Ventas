@@ -16,12 +16,18 @@
                         @endif
                         <a href="{{ route('objetos.edit', $objeto) }}">Editar</a>
                         <p><strong>Categoria:</strong></p>
-                        <p>{{ $objeto->categoria }}</p>
+                        <p>
+                            <select disabled name="categoria" id="categoria" class="form-control">
+                                <option  value="">{{ old('categoria', $objeto->categoria->name) }}</option>
+                            </select>
+                        </p>
                         <br>
                         <p><strong>Descripcion:</strong></p>
                         <p>{{ $objeto->descripcion }}</p>
                         <td>
-                            <img src="{{ asset($objeto->foto) }}" alt="" width="200px">
+                            <p><strong>foto:</strong></p>
+
+                            <img src="{{asset($objeto->foto) }}" alt="" width="200px">
                         </td>
                         <br>
                         <br>

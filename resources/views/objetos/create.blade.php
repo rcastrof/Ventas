@@ -47,7 +47,12 @@
                         <br>
                         <label>
                             Categoria:<br>
-                            <input type="text" name="categoria" value="{{old('categoria')}}">
+                            <select name="categoria" id="categoria" class="form-control">
+                                <option value="">Seleccione categoria</option>
+                                @foreach ($categorias as $categoria)
+                                <option value="{{$categoria['id']}}">{{$categoria['name']}}</option>
+                                @endforeach
+                            </select>
                         </label>
                         @error('categoria')
                         <br>

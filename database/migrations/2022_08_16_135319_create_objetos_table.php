@@ -19,14 +19,19 @@ class CreateObjetosTable extends Migration
             $table->string('name');
             $table->string('foto');
             $table->string('descripcion');
-            $table->string('categoria');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
 
-            $table->unsignedBigInteger('user_id');
+            $table->foreign('categoria_id')
+            ->references('id')
+            ->on('categorias')
+            ->onDelete('set null');
+
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-                
+                ->onDelete('set null');
+
             $table->timestamps();
         });
     }

@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function objetos(){
-        return $this->hasMany('App\Objeto');
+        return $this->hasMany('App\Models\Objeto');
     }
 }
