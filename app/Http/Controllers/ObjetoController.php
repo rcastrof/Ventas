@@ -16,10 +16,9 @@ class ObjetoController extends Controller
         $this->middleware('auth');
     }
 
-    /* llena $objeto con la cantidad de objetos dentro de paginate() y retorna la vista index*/
     public function index()
     {
-        $objetos = Objeto::paginate();
+        $objetos = Objeto::where('user_id', Auth::user()->id)->get();
         return view('objetos.index' ,compact('objetos'));
     }
 
@@ -87,9 +86,5 @@ class ObjetoController extends Controller
     {
         Objeto::destroy($id);
         return redirect()->route('objetos.index');
-    }
-    public function misObjetos()
-    {
-        return Objeto::where('user_id', Auth::user()->id)->get();
     }
 }
