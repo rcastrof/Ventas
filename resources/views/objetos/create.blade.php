@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.logged')
 @section('title','Objetos create')
 @section('content')
 <div class="container">

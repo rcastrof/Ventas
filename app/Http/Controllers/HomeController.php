@@ -22,7 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function __invoke()
+    public function index()
     {
         $objetos = Objeto::paginate();
         return view('home'  ,compact('objetos'));

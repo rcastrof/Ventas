@@ -32,7 +32,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('objetos.create') }}">Crear objeto</a>
+                            <a href="{{ route('objetos.index') }}">Mis Objetos</a>
+                        </li>
 
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/', HomeController::class);
+Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(ObjetoController::class)->group(function(){
     Route::get('objetos', 'index')->name('objetos.index');
@@ -31,7 +31,7 @@ Route::controller(ObjetoController::class)->group(function(){
 
     Route::get('objetos/{objeto}', 'show')->name('objetos.show');
     Route::get('objetos/{objeto}/edit', 'edit')->name('objetos.edit');
-    
+
 //metodo put para actualizar no post.
     Route::put('objetos/{objeto}', 'update')->name('objetos.update');
 

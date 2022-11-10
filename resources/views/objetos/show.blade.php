@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.logged')
 @section('title', 'objetos ' . $objeto->name)
 @section('content')
     <div class="container">
