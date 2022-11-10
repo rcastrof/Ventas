@@ -26,8 +26,7 @@
                         <p>{{ $objeto->descripcion }}</p>
                         <td>
                             <p><strong>foto:</strong></p>
-
-                            <img src="{{asset($objeto->foto) }}" alt="" width="200px">
+                            <img src="{{asset($objeto->foto) }}" alt="image" width="200px" >
                         </td>
                         <br>
                         <br>

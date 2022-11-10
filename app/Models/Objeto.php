@@ -10,6 +10,7 @@ class Objeto extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $fillable= ['name','foto','descripcion'];
 
     public function user()
     {

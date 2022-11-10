@@ -44,15 +44,13 @@ class ObjetoController extends Controller
         $request->validate([
             'foto' => 'required|image'
         ]);
-        $newFilename = md5($request->file('foto')->getClientOriginalName());
-        $extension = $request->file('foto')->getClientOriginalExtension();
-        if ($request->hasFile('foto')) {
-            $objeto['foto']=$request->file('foto')->storeAs('public/uploads', $newFilename . '.'. $extension);
-        }
+        $fileName = time().$request->file('foto')->getClientOriginalName();
+        $path = $request->file('foto')->storeAs('uploads', $fileName , 'public');
+
 
         $objeto = [
             'name' => $request->input('name'),
-            'foto' => Storage::url('public/uploads/'. $newFilename . '.'. $extension),
+            'foto' => '/storage/'.$path,
             'descripcion' => $request->input('descripcion'),
             'categoria_id' => $request->get('categoria'),
             'user_id' =>  auth()->user()->id,

@@ -16,7 +16,7 @@
                         @csrf {{-- token oculto --}}
                         <label>
                             Nombre:<br>
-                            <input type="text" name="name" value="{{old('name')}}">
+                            <input required type="text" name="name" value="{{old('name')}}">
                         </label>
                         @error('name')
                         <br>
@@ -26,7 +26,7 @@
                         <br>
                         <label>
                             Imagen:<br>
-                            <input type="file" name="foto" id="foto" accept="image/*">
+                            <input type="file" required name="foto" id="foto" accept="image/*">
                             @error('foto')
                         <br>
                         <small class="text-danger">{{$message}}</small>
@@ -37,7 +37,7 @@
                         <br>
                         <label>
                             Descripcion:<br>
-                            <textarea name="descripcion" rows="5">{{old('descripcion')}}</textarea>
+                            <textarea name="descripcion" required rows="5">{{old('descripcion')}}</textarea>
                         </label>
                         @error('descripcion')
                         <br>
@@ -47,7 +47,7 @@
                         <br>
                         <label>
                             Categoria:<br>
-                            <select name="categoria" id="categoria" class="form-control">
+                            <select name="categoria" required id="categoria" class="form-control">
                                 <option value="">Seleccione categoria</option>
                                 @foreach ($categorias as $categoria)
                                 <option value="{{$categoria['id']}}">{{$categoria['name']}}</option>
@@ -60,7 +60,7 @@
                         <br>
                         @enderror
                         <br>
-                        <button type="submit">Enviar</button>
+                        <button type="submit">Crear</button>
                     </form>
                 </div>
             </div>
