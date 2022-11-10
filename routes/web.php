@@ -32,8 +32,13 @@ Route::controller(ObjetoController::class)->group(function(){
     Route::get('objetos/{objeto}', 'show')->name('objetos.show');
     Route::get('objetos/{objeto}/edit', 'edit')->name('objetos.edit');
 
+    Route::get('objetos/misobjetos','misObjetos')->name('objetos.misobjetos');
+
 //metodo put para actualizar no post.
     Route::put('objetos/{objeto}', 'update')->name('objetos.update');
 
     Route::delete('objetos/{id}', 'destroy')->name('objetos.destroy');
 });
+
+/* Pruebas */
+Route::get("/pruebas", [App\Http\Controllers\ObjetoController::class, 'misObjetos']);

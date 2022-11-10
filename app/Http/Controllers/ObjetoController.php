@@ -88,4 +88,8 @@ class ObjetoController extends Controller
         Objeto::destroy($id);
         return redirect()->route('objetos.index');
     }
+    public function misObjetos()
+    {
+        return Objeto::where('user_id', Auth::user()->id)->get();
+    }
 }
