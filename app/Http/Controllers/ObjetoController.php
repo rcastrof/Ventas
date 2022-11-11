@@ -75,11 +75,7 @@ class ObjetoController extends Controller
     /* valida que los parametros sean requeridos en el formulario de ingreso */
     public function update(Request $request, Objeto $objeto)
     {
-        $request->validate([
-            'name' => 'required',
-            'descripcion' => 'required',
-            'categoria_id' => 'required'
-        ]);
+
         $objeto->update($request->all());
         return redirect()->route('objetos.show', $objeto);
     }
